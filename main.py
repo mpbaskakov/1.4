@@ -20,17 +20,19 @@ def read_key():
 def people_document_number():
 	document_number = input('Введите номер документа:')
 	for docs in documents:
-		for number in docs.values():
-			if document_number == number:
-				print(docs['name'])
+		if document_number == docs['number']:
+			print(docs['name'])
 
 def shelf_location():
 	document_number = input('Введите номер документа:')
-	for shelf_number in directories.items():
-		for shelf_contains in shelf_number:
-			for shelf in shelf_contains:
-				if document_number == shelf:
-					print('Этот документ лежит на полке №: ' + shelf_number[0])
+	for shelf_number, shelf_documents in directories.items():
+		if shelf_documents.count(document_number) > 0:
+	 		print('Этот документ лежит на полке №: ' + shelf_number)
+	# for shelf_number in directories.items():
+	# 	for shelf_contains in shelf_number:
+	# 		for shelf in shelf_contains:
+	# 			if document_number == shelf:
+	# 				print('Этот документ лежит на полке №: ' + shelf_number[0])
 				# else:
 				# 	print('Документ не найден') #не знаю как заставить это работать
 
